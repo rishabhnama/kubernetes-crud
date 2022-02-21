@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: "mysql"
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+      
+  mynode:
+    build: ./server
+    depends_on: 
+      - db
+    ports:
+      - "8000:8000"
+
+  myapp:
+    build: ./client
+    depends_on:
+      - mynode
+    ports:
+      - "80:80"
+
