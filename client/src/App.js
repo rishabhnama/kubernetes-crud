@@ -14,7 +14,7 @@ function App() {
   const [employeeList, setEmployeeList] = useState([]);
 
   const addEmployee = () => {
-    Axios.post("http://52.191.118.178:8000/create", {
+    Axios.post("http://localhost:8000/create", {
       name: name,
       age: age,
       country: country,
@@ -35,13 +35,13 @@ function App() {
   };
 
   const getEmployees = () => {
-    Axios.get("http://52.191.118.178:8000/employees").then((response) => {
+    Axios.get("http://localhost:8000/employees").then((response) => {
       setEmployeeList(response.data);
     });
   };
 
   const updateEmployeeWage = (id) => {
-    Axios.put("http://52.191.118.178:8000/update", { wage: newWage, id: id }).then(
+    Axios.put("http://localhost:8000/update", { wage: newWage, id: id }).then(
       (response) => {
         setEmployeeList(
           employeeList.map((val) => {
@@ -62,7 +62,7 @@ function App() {
   };
 
   const deleteEmployee = (id) => {
-    Axios.delete(`http://52.191.118.178:8000/delete/${id}`).then((response) => {
+    Axios.delete(`http://localhost:8000/delete/${id}`).then((response) => {
       setEmployeeList(
         employeeList.filter((val) => {
           return val.id != id;
