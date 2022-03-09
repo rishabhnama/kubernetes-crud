@@ -26,11 +26,11 @@ spec:
               name: mysql-secret
               key: mysql-user
               
-        -name: MYSQL_ROOT_PASSWORD
-         valueFrom:
-          secretKeyRef:
-            name: mysql-secret
-            key: mysql-password
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-password
 
            
               

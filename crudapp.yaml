@@ -19,7 +19,7 @@ spec:
         image: rishabhnama/crudappreact:latest
         ports:
         - containerPort: 3000
-
+        
 ---
 apiVersion: v1
 kind: Service
