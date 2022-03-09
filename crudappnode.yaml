@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crudappnode-deployment
+  labels:
+    app: crudappnode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crudappnode
+  template:
+    metadata:
+      labels:
+        app: crudappnode
+    spec:
+      containers:
+      - name: crudappnode
+        image: rishabhnama/crudappnode:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: user
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-user
+
+        - name: MYSQL_ROOT_PASSWORD
+         valueFrom:
+          secretKeyRef:
+            name: mysql-secret
+            key: mysql-password
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: crudappnode-service
+spec:
+  type: NodePort
+  selector:
+    app: crudappnode
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      nodePort: 30001
