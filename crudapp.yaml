@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: crudapp
-        image: rishabhnama/crudappreact:1
+        image: rishabhnama/crudappreact:latest
         ports:
         - containerPort: 3000
 
