@@ -16,15 +16,15 @@ spec:
     spec:
       containers:
       - name: crudappnode
-        image: rishabhnama/crudappnode:latest
+        image: rishabhnama/crudnodetest:latest
         ports:
         - containerPort: 8000
         env:
-        - name: user
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: mysql-user
+        # - name: user
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: mysql-secret
+        #       key: mysql-user
 
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
