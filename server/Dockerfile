@@ -2,10 +2,12 @@ FROM node:17-alpine
 
 WORKDIR /var/dbapp
 
+# COPY ./index.js ./
+
 COPY ./package.json ./
 
 RUN npm install
 
 COPY . .
 
-CMD ["npm", "start"]
+CMD ["node", "index.js"]
